@@ -12,6 +12,7 @@
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "typecheck": "tsc --noEmit"
   },
+  "prettier": "@repo/prettier-config",
   "dependencies": {
     "@eslint/compat": "^1.4.0",
     "@eslint/js": "catalog:",
@@ -30,6 +31,5 @@
     "eslint": "catalog:",
     "prettier": "catalog:",
     "typescript": "catalog:"
-  },
-  "prettier": "@repo/prettier-config"
+  }
 }

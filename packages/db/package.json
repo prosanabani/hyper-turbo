@@ -1,6 +1,7 @@
 {
   "name": "@repo/db",
   "private": true,
+  "license": "MIT",
   "type": "module",
   "exports": {
     ".": {
@@ -16,7 +17,6 @@
       "default": "./src/schema.ts"
     }
   },
-  "license": "MIT",
   "scripts": {
     "build": "tsc",
     "clean": "git clean -xdf .cache .turbo dist node_modules",
@@ -28,6 +28,7 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "with-env": "dotenv -e ../../.env --"
   },
+  "prettier": "@repo/prettier-config",
   "dependencies": {
     "@vercel/postgres": "^0.10.0",
     "drizzle-orm": "^0.44.7",
@@ -42,6 +43,5 @@
     "eslint": "catalog:",
     "prettier": "catalog:",
     "typescript": "catalog:"
-  },
-  "prettier": "@repo/prettier-config"
+  }
 }
