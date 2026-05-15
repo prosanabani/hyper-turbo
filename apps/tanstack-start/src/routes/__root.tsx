@@ -31,16 +31,36 @@ function RootComponent() {
   );
 }
 
+import { getLocale, locales, setLocale } from "~/paraglide/runtime";
+
 function RootDocument({ children }: { children: React.ReactNode }) {
+  const locale = getLocale();
+  const dir = locale === "ar" ? "rtl" : "ltr";
+
   return (
     <ThemeProvider>
-      <html lang="en" suppressHydrationWarning>
+      <html lang={locale} dir={dir} suppressHydrationWarning>
         <head>
           <HeadContent />
         </head>
         <body className="bg-background text-foreground min-h-screen font-sans antialiased">
           {children}
-          <div className="absolute right-4 bottom-12">
+          <div className="absolute right-4 bottom-12 flex flex-col gap-2">
+            <div className="flex gap-2 bg-card p-2 rounded-lg shadow border border-border">
+              {locales.map((l) => (
+                <button
+                  key={l}
+                  onClick={() => setLocale(l)}
+                  className={`px-3 py-1 rounded text-sm transition-colors ${
+                    l === locale
+                      ? "bg-primary text-primary-foreground font-medium"
+                      : "hover:bg-accent hover:text-accent-foreground text-muted-foreground"
+                  }`}
+                >
+                  {l.toUpperCase()}
+                </button>
+              ))}
+            </div>
             <ThemeToggle />
           </div>
           <Toaster />

@@ -5,6 +5,7 @@ import SuperJSON from "superjson";
 
 import "~/env";
 import { routeTree } from "./routeTree.gen";
+import { deLocalizeUrl, localizeUrl } from "./paraglide/runtime";
 
 export function getRouter() {
   const queryClient = new QueryClient({
@@ -18,6 +19,10 @@ export function getRouter() {
     routeTree,
     context: { queryClient },
     defaultPreload: "intent",
+    rewrite: {
+      input: ({ url }) => deLocalizeUrl(url),
+      output: ({ url }) => localizeUrl(url),
+    },
   });
   setupRouterSsrQueryIntegration({
     router,
