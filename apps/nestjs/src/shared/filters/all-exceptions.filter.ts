@@ -23,7 +23,7 @@ export class AllExceptionsFilter<T> implements ExceptionFilter {
     this.logger.setContext(AllExceptionsFilter.name);
   }
 
-  catch(exception: T, host: ArgumentsHost): any {
+  catch(exception: T, host: ArgumentsHost): void {
     const ctx = host.switchToHttp();
     const req: Request = ctx.getRequest<Request>();
     const res: Response = ctx.getResponse<Response>();
@@ -38,7 +38,7 @@ export class AllExceptionsFilter<T> implements ExceptionFilter {
     let errorName: string | undefined = undefined;
     let message: string | undefined = undefined;
     let details: string | Record<string, any> | undefined = undefined;
-    // TODO : Based on language value in header, return a localized message.
+    // TODO: derive from Accept-Language when you add i18n
     const acceptedLanguage = 'ja';
     let localizedMessage: string | undefined = undefined;
 
@@ -84,9 +84,8 @@ export class AllExceptionsFilter<T> implements ExceptionFilter {
       stack,
     });
 
-    // Suppress original internal server error details in prod mode
-    const isProMood = this.config.get<string>('env') !== 'development';
-    if (isProMood && statusCode === HttpStatus.INTERNAL_SERVER_ERROR) {
+    const isProduction = this.config.get<string>('env') !== 'development';
+    if (isProduction && statusCode === HttpStatus.INTERNAL_SERVER_ERROR) {
       error.message = 'Internal server error';
     }
 

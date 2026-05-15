@@ -1,6 +1,11 @@
 import { Type } from '@nestjs/common';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
+/**
+ * Wire format for successful JSON responses. Globally enforced by
+ * {@link ResponseEnvelopeInterceptor}: bare handler results become `{ data, meta }`.
+ * Errors use {@link BaseApiErrorResponse} via {@link AllExceptionsFilter}.
+ */
 export class BaseApiResponse<T> {
   public data: T; // Swagger Decorator is added in the extended class below, since that will override this one.
 
