@@ -6,48 +6,14 @@ import { nitro } from "nitro/vite";
 import { defineConfig } from "vite";
 import tsConfigPaths from "vite-tsconfig-paths";
 
+import { paraglideConfig } from "./paraglide.config.js";
+
 export default defineConfig({
   server: {
     port: 3001,
   },
   plugins: [
-    paraglideVitePlugin({
-      project: "./project.inlang",
-      outdir: "./src/paraglide",
-      outputStructure: "message-modules",
-      cookieName: "PARAGLIDE_LOCALE",
-      strategy: ["url", "cookie", "preferredLanguage", "baseLocale"],
-      urlPatterns: [
-        {
-          pattern: "/",
-          localized: [
-            ["en", "/"],
-            ["ar", "/ar"],
-          ],
-        },
-        {
-          pattern: "/about",
-          localized: [
-            ["en", "/about"],
-            ["ar", "/ar/about-us"],
-          ],
-        },
-        {
-          pattern: "/api/:path(.*)?",
-          localized: [
-            ["en", "/api/:path(.*)?"],
-            ["ar", "/api/:path(.*)?"],
-          ],
-        },
-        {
-          pattern: "/:path(.*)?",
-          localized: [
-            ["en", "/:path(.*)?"],
-            ["ar", "/ar/:path(.*)?"],
-          ],
-        },
-      ],
-    }),
+    paraglideVitePlugin(paraglideConfig),
     tsConfigPaths({
       projects: ["./tsconfig.json"],
     }),
