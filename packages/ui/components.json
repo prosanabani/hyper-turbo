@@ -3,6 +3,7 @@
   "style": "new-york",
   "rsc": true,
   "tsx": true,
+  "rtl": true,
   "tailwind": {
     "config": "",
     "css": "unused.css",
@@ -11,7 +12,8 @@
   },
   "aliases": {
     "utils": "@repo/ui",
-    "components": "src/",
-    "ui": "src/"
+    "components": "./src",
+    "ui": "./src",
+    "hooks": "./hooks"
   }
 }
