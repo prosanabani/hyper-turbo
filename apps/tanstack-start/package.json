@@ -18,6 +18,8 @@
   "dependencies": {
     "@fontsource-variable/geist": "^5.2.8",
     "@fontsource-variable/geist-mono": "^5.2.7",
+    "@fontsource-variable/noto-sans-arabic": "^5.2.10",
+    "@hookform/resolvers": "^5.2.2",
     "@repo/ui": "workspace:*",
     "@t3-oss/env-core": "^0.13.8",
     "@tanstack/react-query": "catalog:",
@@ -25,9 +27,14 @@
     "@tanstack/react-router-devtools": "^1.135.2",
     "@tanstack/react-router-ssr-query": "^1.135.2",
     "@tanstack/react-start": "^1.135.2",
+    "@tanstack/react-table": "^8.21.3",
+    "lucide-react": "^1.16.0",
     "nitro": "3.0.1-alpha.1",
     "react": "catalog:react19",
+    "react-day-picker": "^10.0.1",
     "react-dom": "catalog:react19",
+    "react-hook-form": "^7.76.0",
+    "recharts": "3.8.0",
     "superjson": "2.2.3",
     "zod": "catalog:"
   },

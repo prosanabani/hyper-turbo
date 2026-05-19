@@ -57,4 +57,8 @@ export const translatedPathnames = createTranslatedPathnames({
     en: "/about",
     ar: "/about-us",
   },
+  "/ui-showcase": {
+    en: "/ui-showcase",
+    ar: "/ui-showcase",
+  },
 });

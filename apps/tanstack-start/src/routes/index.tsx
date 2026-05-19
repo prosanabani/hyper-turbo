@@ -16,9 +16,17 @@ function RouteComponent() {
         This is an example of Paraglide i18n localization in TanStack Start.
       </p>
 
-      <Link to="/about" className="text-primary font-semibold hover:underline">
-        Go to About Page
-      </Link>
+      <div className="flex flex-col items-center gap-4">
+        <Link to="/about" className="text-primary font-semibold hover:underline">
+          Go to About Page
+        </Link>
+        <Link
+          to="/ui-showcase"
+          className="text-primary font-semibold hover:underline"
+        >
+          UI Component Showcase (RTL test)
+        </Link>
+      </div>
     </main>
   );
 }

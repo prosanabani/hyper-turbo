@@ -21,6 +21,13 @@ export const paraglideConfig = {
       ],
     },
     {
+      pattern: "/ui-showcase",
+      localized: [
+        ["en", "/ui-showcase"],
+        ["ar", "/ar/ui-showcase"],
+      ],
+    },
+    {
       pattern: "/api/:path(.*)?",
       localized: [
         ["en", "/api/:path(.*)?"],

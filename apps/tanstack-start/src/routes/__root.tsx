@@ -9,8 +9,10 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 
+import { DirectionProvider } from "@repo/ui/direction";
 import { ThemeProvider, ThemeToggle } from "@repo/ui/theme";
 import { Toaster } from "@repo/ui/toast";
+import { TooltipProvider } from "@repo/ui/tooltip";
 
 import appCss from "~/styles.css?url";
 
@@ -44,7 +46,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           <HeadContent />
         </head>
         <body className="bg-background text-foreground min-h-screen font-sans antialiased">
-          {children}
+          <DirectionProvider dir={dir}>
+            <TooltipProvider>{children}</TooltipProvider>
+          </DirectionProvider>
           <div className="absolute right-4 bottom-12 flex flex-col gap-2">
             <div className="flex gap-2 bg-card p-2 rounded-lg shadow border border-border">
               {locales.map((l) => (
