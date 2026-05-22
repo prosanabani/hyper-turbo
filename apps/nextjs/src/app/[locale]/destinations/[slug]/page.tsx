@@ -28,7 +28,7 @@ export default async function DestinationPage({
   return (
     <div className="mx-auto px-4 py-10">
       <script
-        // eslint-disable-next-line react/no-danger
+         
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         type="application/ld+json"
       />
@@ -70,7 +70,7 @@ export async function generateMetadata({
 export async function generateStaticParams() {
   const { routing } = await import("@/i18n/routing");
   const { destinationSlugs } = await import("@/data/destinations");
-  const parameters: Array<{ locale: string; slug: string }> = [];
+  const parameters: { locale: string; slug: string }[] = [];
   for (const locale of routing.locales) {
     for (const slug of destinationSlugs) {
       parameters.push({ locale, slug });

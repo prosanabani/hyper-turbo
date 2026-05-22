@@ -5,26 +5,26 @@ type Locale = "ar" | "en";
 
 const messages = { ar, en } as const;
 
-export type ErrorMessages = {
+export interface ErrorMessages {
   description: string;
   goToHomepage: string;
   title: string;
   tryAgain: string;
-};
+}
 
-export type GlobalErrorMessages = {
+export interface GlobalErrorMessages {
   contactSupport: string;
   description: string;
   errorId: string;
   goToHomepage: string;
   title: string;
   tryAgain: string;
-};
+}
 
 export function getErrorMessages(locale: Locale): ErrorMessages {
-  return (messages[locale] ?? messages.en).Error as ErrorMessages;
+  return messages[locale].Error as ErrorMessages;
 }
 
 export function getGlobalErrorMessages(locale: Locale): GlobalErrorMessages {
-  return (messages[locale] ?? messages.en).GlobalError as GlobalErrorMessages;
+  return messages[locale].GlobalError as GlobalErrorMessages;
 }

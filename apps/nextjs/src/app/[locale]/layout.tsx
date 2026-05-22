@@ -1,7 +1,7 @@
-import { type Metadata } from "next";
+import type {Metadata} from "next";
 import { Noto_Sans_Arabic } from "next/font/google";
 import { notFound } from "next/navigation";
-import { DirectionProvider } from "@/components/ui/direction";
+import { DirectionProvider } from "@repo/ui/components/direction";
 import { siteName, siteTagline, siteUrl } from "@/config/site";
 import { routing } from "@/i18n/routing";
 import { buildWebSiteJsonLd, canonicalUrl } from "@/lib/seo";
@@ -68,9 +68,9 @@ export async function generateMetadata({
 /**
  * SSG: pre-render all locale segments at build time.
  */
-export const generateStaticParams = async () => {
+export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
-};
+}
 
 export default async function LocaleLayout({
   children,
@@ -93,7 +93,7 @@ export default async function LocaleLayout({
       <LocaleDocumentAttributes fontClassName={fontClassName} locale={locale} />
       {/* JSON-LD for SEO: WebSite schema (valid in body per spec). */}
       <script
-        // eslint-disable-next-line react/no-danger
+         
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         type="application/ld+json"
       />

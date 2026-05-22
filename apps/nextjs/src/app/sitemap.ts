@@ -6,7 +6,7 @@
 import { siteUrl } from "@/config/site";
 import { destinationSlugs } from "@/data/destinations";
 import { routing } from "@/i18n/routing";
-import { type MetadataRoute } from "next";
+import type {MetadataRoute} from "next";
 
 const changeFrequency = "weekly" as const;
 const priority = 0.8;

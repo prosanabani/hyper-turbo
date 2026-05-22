@@ -3,7 +3,7 @@
  * In a real app this could come from a CMS or markdown files.
  */
 
-export type Destination = {
+export interface Destination {
   /**
    * Localized short description (key for next-intl).
    */
@@ -20,7 +20,7 @@ export type Destination = {
    * Unique slug for URL (e.g. "penang", "langkawi").
    */
   slug: string;
-};
+}
 
 /**
  * All destinations; slugs are used in generateStaticParams for SSG.

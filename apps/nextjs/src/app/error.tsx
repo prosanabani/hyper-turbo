@@ -11,18 +11,18 @@ import {
 import { Link } from "@/i18n/navigation";
 import { getErrorMessages } from "@/lib/error-messages";
 import { AlertTriangle, Home, RefreshCw } from "lucide-react";
-import React, { useEffect, useState } from "react";
-
 type Locale = "ar" | "en";
 
+function getClientLocale(): Locale {
+  if (typeof window === "undefined") {
+    return "en";
+  }
+
+  return getLocaleFromPathname(window.location.pathname);
+}
+
 export default function Error({ reset }: { readonly reset: () => void }) {
-  const [locale, setLocale] = useState<Locale>("en");
-
-  useEffect(() => {
-    const path = typeof window === "undefined" ? "" : window.location.pathname;
-    setLocale(getLocaleFromPathname(path));
-  }, []);
-
+  const locale = getClientLocale();
   const t = getErrorMessages(locale);
 
   return (

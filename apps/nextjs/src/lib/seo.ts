@@ -9,12 +9,12 @@ import {
   siteTagline,
   siteUrl,
 } from "@/config/site";
-import { type Metadata } from "next";
+import type {Metadata} from "next";
 
 /**
  * Input for building page metadata.
  */
-export type PageMetaInput = {
+export interface PageMetaInput {
   /**
    * Meta description.
    */
@@ -39,7 +39,7 @@ export type PageMetaInput = {
    * Page title (can include site name via titleTemplate in layout).
    */
   title: string;
-};
+}
 
 /**
  * Build Next.js Metadata for a page (title, description, openGraph, twitter, alternates).
@@ -140,7 +140,6 @@ export function buildWebSiteJsonLd(locale: string) {
  */
 export function canonicalUrl(path = ""): string {
   if (path.startsWith("http")) return path;
-  // eslint-disable-next-line sonarjs/slow-regex, sonarjs/anchor-precedence
   const normalized = path.replace(/^\/+|\/+$/gu, "");
   return normalized ? `${siteUrl}/${normalized}` : siteUrl;
 }

@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@repo/ui/components/button";
 import { Link } from "@/i18n/navigation";
 import { buildPageMetadata } from "@/lib/seo";
 import { CircleChevronRight } from "lucide-react";

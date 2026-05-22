@@ -4,9 +4,17 @@ import { Button } from "@repo/ui/components/button";
 import "@/styles/globals.css";
 import { getGlobalErrorMessages } from "@/lib/error-messages";
 import { Home, RefreshCw, ServerCrash } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 type Locale = "ar" | "en";
+
+function getClientLocale(): Locale {
+  if (typeof window === "undefined") {
+    return "en";
+  }
+
+  return getLocaleFromPathname(window.location.pathname);
+}
 
 export default function GlobalError({
   error,
@@ -15,20 +23,16 @@ export default function GlobalError({
   readonly error: Error & { digest?: string };
   readonly reset: () => void;
 }) {
-  const [locale, setLocale] = useState<Locale>("en");
+  const locale = getClientLocale();
 
   useEffect(() => {
-    const path =
-      typeof window === "undefined" ? "" : window.location.pathname;
-    const nextLocale = getLocaleFromPathname(path);
-    setLocale(nextLocale);
     const root = document.documentElement;
-    root.lang = nextLocale;
-    root.dir = nextLocale === "ar" ? "rtl" : "ltr";
+    root.lang = locale;
+    root.dir = locale === "ar" ? "rtl" : "ltr";
     const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     if (isDark) root.classList.add("dark");
     else root.classList.remove("dark");
-  }, []);
+  }, [locale]);
 
   const t = getGlobalErrorMessages(locale);
   const homeHref = locale === "ar" ? "/ar" : "/en";

@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@repo/ui/components/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,11 +9,11 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@repo/ui/components/dropdown-menu";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { type Locale, useLocale, useTranslations } from "next-intl";
+import {  useLocale, useTranslations } from "next-intl";
+import type {Locale} from "next-intl";
 import { useTransition } from "react";
-import * as React from "react";
 
 const SUPPORTED_LOCALES: Locale[] = ["en", "ar"];
 
@@ -26,7 +26,7 @@ export default function LocaleSwitcherSelect() {
 
   function onLocaleChange(nextLocale: string) {
     startTransition(() => {
-      router.replace({ pathname }, { locale: nextLocale as Locale });
+      router.replace({ pathname }, { locale: nextLocale });
     });
   }
 

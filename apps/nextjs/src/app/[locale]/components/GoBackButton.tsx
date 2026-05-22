@@ -3,9 +3,9 @@
 import { Button } from "@repo/ui/components/button";
 import { ArrowLeft } from "lucide-react";
 
-type Props = {
+interface Props {
   readonly label?: string;
-};
+}
 
 export function GoBackButton({ label = "Go Back" }: Readonly<Props>) {
   return (

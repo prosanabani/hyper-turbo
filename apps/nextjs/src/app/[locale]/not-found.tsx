@@ -1,5 +1,5 @@
-import { type Metadata } from "next";
-import { Button } from "@/components/ui/button";
+import type {Metadata} from "next";
+import { Button } from "@repo/ui/components/button";
 import { Link } from "@/i18n/navigation";
 import { Compass, Home, MapPin } from "lucide-react";
 import { getTranslations } from "next-intl/server";

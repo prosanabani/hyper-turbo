@@ -2,10 +2,10 @@
 
 import { useEffect } from "react";
 
-type Props = {
+interface Props {
   readonly fontClassName: string;
   readonly locale: string;
-};
+}
 
 /**
  * Sets lang, dir, and font class on the document element so the root layout
