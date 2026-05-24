@@ -3,229 +3,23 @@
 
 @source "../**/*.{ts,tsx}";
 
-@custom-variant dark (&:is(.dark *));
-
 html {
-  /* Default browser font size is 16px. making 1rem equal to 15px */
-  font-size: 93.75%; /* 15px / 16px = 0.9375 or 93.75% */
   scroll-behavior: smooth; /* Enable smooth scrolling for anchor links */
 }
 
 @theme inline {
-  /* Border radius scale */
-  --radius-sm: calc(
-    var(--radius) - 4px
-  ); /* small radius (4px smaller than base) */
-  --radius-md: calc(
-    var(--radius) - 2px
-  ); /* medium radius (2px smaller than base) */
-  --radius-lg: var(--radius); /* large radius (base radius) */
-  --radius-xl: calc(
-    var(--radius) + 4px
-  ); /* extra large radius (4px larger than base) */
-
-  /* Color aliases - these reference the root variables */
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
   --color-primary-gray: var(--primary-gray);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-
-  /* Suggested additional variables */
-
-  /* Spacing scale - matches common 4px/8px base system */
-  --spacing-none: 0; /* 0px - 0 in tailwind- reset/none */
-  --spacing-xs: 0.25rem; /* 4px -1 in tailwind- extra small */
-  --spacing-sm: 0.5rem; /* 8px -2 in tailwind- small */
-  --spacing-md: 0.75rem; /* 12px -3 in tailwind- medium */
-  --spacing-lg: 1rem; /* 16px - 4 in tailwind - large */
-  --spacing-xl: 1.5rem; /* 24px - 6 in tailwind - extra large */
-  --spacing-2xl: 2rem; /* 32px -8 in tailwind- 2x large */
-  --spacing-3xl: 3rem; /* 48px -12 in tailwind- 3x large */
-  --spacing-4xl: 4rem; /* 64px -16 in tailwind- 4x large */
-  --spacing-5xl: 5rem; /* 80px -20 in tailwind- 5x large */
-  --spacing-6xl: 6rem; /* 96px -24 in tailwind- 6x large */
-  --spacing-7xl: 7rem; /* 112px -28 in tailwind- 7x large */
-
-  /* Font sizes */
-  --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-base: 1rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 1.5rem;
-  --text-3xl: 1.875rem;
-  --text-4xl: 2.25rem;
-  --text-5xl: 3rem;
-
-  /* Font weights */
-  --font-light: 300;
-  --font-normal: 400;
-  --font-medium: 500;
-  --font-semibold: 600;
-  --font-bold: 700;
-
-  /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg:
-    0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-xl:
-    0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-
-  /* Transitions */
-  --transition-fast: 150ms ease;
-  --transition-normal: 250ms ease;
-  --transition-slow: 400ms ease;
-
-  /* Z-index */
-  --z-index-dropdown: 1000;
-  --z-index-sticky: 1020;
-  --z-index-fixed: 1030;
-  --z-index-modal: 1050;
-  --z-index-popover: 1070;
-  --z-index-tooltip: 1080;
-
-  /* Container widths */
-  --container-xs: 20rem;
-  --container-sm: 24rem;
-  --container-md: 28rem;
-  --container-lg: 32rem;
-  --container-xl: 36rem;
-  --container-2xl: 42rem;
-  --container-3xl: 48rem;
-  --container-4xl: 56rem;
-  --container-5xl: 64rem;
-  --container-6xl: 72rem;
-  --container-7xl: 80rem;
-}
-@theme {
-  --breakpoint-xs: 30rem;
-  --breakpoint-sm: 40rem;
-  --breakpoint-md: 48rem;
-  --breakpoint-lg: 64rem;
-  --breakpoint-xl: 80rem;
-  --breakpoint-2xl: 96rem;
-  --breakpoint-3xl: 120rem;
 }
 
-/* Light mode – page background, body text, and base surfaces */
 :root {
-  --radius: 0.625rem; /* default border radius for components */
-  --background: oklch(1 0 0); /* page background */
-  --foreground: oklch(0.145 0 0); /* body text, headings */
-  --card: oklch(1 0 0); /* card, panel, sheet backgrounds */
-  --card-foreground: oklch(0.145 0 0); /* text on cards */
-  --popover: oklch(1 0 0); /* dropdown, popover, tooltip backgrounds */
-  --popover-foreground: oklch(0.145 0 0); /* text in popovers */
-  --primary: oklch(0.205 0 0); /* primary buttons, links, brand actions */
-  --primary-gray: oklch(
-    0.6428 0.0152 248.06
-  ); /* gray used with primary (e.g. badges) */
-  --primary-foreground: oklch(0.985 0 0); /* text on primary buttons */
-  --secondary: oklch(0.97 0 0); /* secondary buttons, subtle backgrounds */
-  --secondary-foreground: oklch(0.205 0 0); /* text on secondary */
-  --muted: oklch(
-    0.97 0 0
-  ); /* muted backgrounds (table stripes, disabled areas) */
-  --muted-foreground: oklch(0.556 0 0); /* placeholder, captions, helper text */
-  --accent: oklch(0.97 0 0); /* hover/active states, selected list items */
-  --accent-foreground: oklch(0.205 0 0); /* text on accent (e.g. menu hover) */
-  --destructive: oklch(
-    0.577 0.245 27.325
-  ); /* delete, danger buttons, error states */
-  --border: oklch(0.922 0 0); /* borders, dividers */
-  --input: oklch(0.922 0 0); /* input borders, form field outlines */
-  --ring: oklch(0.708 0 0); /* focus ring (outline) color */
-  --chart-1: oklch(0.646 0.222 41.116); /* chart/data viz series 1 */
-  --chart-2: oklch(0.6 0.118 184.704); /* chart series 2 */
-  --chart-3: oklch(0.398 0.07 227.392); /* chart series 3 */
-  --chart-4: oklch(0.828 0.189 84.429); /* chart series 4 */
-  --chart-5: oklch(0.769 0.188 70.08); /* chart series 5 */
-  --sidebar: oklch(0.985 0 0); /* sidebar/navigation background */
-  --sidebar-foreground: oklch(0.145 0 0); /* sidebar text */
-  --sidebar-primary: oklch(0.205 0 0); /* sidebar active/selected item */
-  --sidebar-primary-foreground: oklch(0.985 0 0); /* text on sidebar primary */
-  --sidebar-accent: oklch(0.97 0 0); /* sidebar hover state */
-  --sidebar-accent-foreground: oklch(0.205 0 0); /* text on sidebar accent */
-  --sidebar-border: oklch(0.922 0 0); /* sidebar dividers */
-  --sidebar-ring: oklch(0.708 0 0); /* sidebar focus ring */
+  --primary-gray: oklch(0.6428 0.0152 248.06);
 }
 
-/* Dark mode – same roles as light, tuned for dark backgrounds */
 .dark {
-  --background: oklch(0.145 0 0); /* page background */
-  --foreground: oklch(0.985 0 0); /* body text, headings */
-  --card: oklch(0.205 0 0); /* card, panel, sheet backgrounds */
-  --card-foreground: oklch(0.985 0 0); /* text on cards */
-  --popover: oklch(0.269 0 0); /* dropdown, popover, tooltip backgrounds */
-  --popover-foreground: oklch(0.985 0 0); /* text in popovers */
-  --primary: oklch(0.922 0 0); /* primary buttons, links, brand actions */
-  --primary-gray: hsl(210, 11%, 40%); /* gray used with primary (e.g. badges) */
-  --primary-foreground: oklch(0.205 0 0); /* text on primary buttons */
-  --secondary: oklch(0.269 0 0); /* secondary buttons, subtle backgrounds */
-  --secondary-foreground: oklch(0.985 0 0); /* text on secondary */
-  --muted: oklch(
-    0.269 0 0
-  ); /* muted backgrounds (table stripes, disabled areas) */
-  --muted-foreground: oklch(0.708 0 0); /* placeholder, captions, helper text */
-  --accent: oklch(0.371 0 0); /* hover/active states, selected list items */
-  --accent-foreground: oklch(0.985 0 0); /* text on accent (e.g. menu hover) */
-  --destructive: oklch(
-    0.704 0.191 22.216
-  ); /* delete, danger buttons, error states */
-  --border: oklch(1 0 0 / 10%); /* borders, dividers */
-  --input: oklch(1 0 0 / 15%); /* input borders, form field outlines */
-  --ring: oklch(0.556 0 0); /* focus ring (outline) color */
-  --chart-1: oklch(0.488 0.243 264.376); /* chart/data viz series 1 */
-  --chart-2: oklch(0.696 0.17 162.48); /* chart series 2 */
-  --chart-3: oklch(0.769 0.188 70.08); /* chart series 3 */
-  --chart-4: oklch(0.627 0.265 303.9); /* chart series 4 */
-  --chart-5: oklch(0.645 0.246 16.439); /* chart series 5 */
-  --sidebar: oklch(0.205 0 0); /* sidebar/navigation background */
-  --sidebar-foreground: oklch(0.985 0 0); /* sidebar text */
-  --sidebar-primary: oklch(
-    0.488 0.243 264.376
-  ); /* sidebar active/selected item */
-  --sidebar-primary-foreground: oklch(0.985 0 0); /* text on sidebar primary */
-  --sidebar-accent: oklch(0.269 0 0); /* sidebar hover state */
-  --sidebar-accent-foreground: oklch(0.985 0 0); /* text on sidebar accent */
-  --sidebar-border: oklch(1 0 0 / 10%); /* sidebar dividers */
-  --sidebar-ring: oklch(0.439 0 0); /* sidebar focus ring */
+  --primary-gray: hsl(210, 11%, 40%);
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
   body {
     @apply bg-background text-foreground;
   }
@@ -239,42 +33,4 @@ iconify-icon {
   display: inline-block;
   width: 1.5em;
   height: 1.5em;
-}
-
-::-webkit-scrollbar {
-  width: 8px; /* Width of the vertical scrollbar */
-  height: 8px; /* Height of the horizontal scrollbar */
-  background-color: var(
-    --secondary
-  ); /* Light track background, use your secondary color */
-  border-radius: var(--radius-lg); /* Match your project's border-radius */
-}
-
-/* Handle of the scrollbar */
-::-webkit-scrollbar-thumb {
-  background-color: var(
-    --primary
-  ); /* Use your primary brand color for the handle */
-  border-radius: var(--radius-lg); /* Match your project's border-radius */
-  border: 2px solid var(--secondary); /* Optional: a small border to make it "float" slightly */
-}
-
-/* Hover state for the scrollbar handle */
-::-webkit-scrollbar-thumb:hover {
-  background-color: var(
-    --accent
-  ); /* Change color on hover, e.g., to your accent color */
-}
-
-/* Corner of the scrollbar (where vertical and horizontal meet) */
-::-webkit-scrollbar-corner {
-  background-color: transparent; /* No background for the corner */
-}
-
-/* For Firefox: Unfortunately, extensive styling is not directly supported via CSS. */
-/* We'll use the default or a very basic style. */
-/* You can set it to auto (default) or thin. 'none' would hide it. */
-* {
-  scrollbar-width: thin; /* 'auto' or 'thin' - makes it less intrusive */
-  scrollbar-color: var(--primary) var(--secondary); /* thumb color track color */
 }
